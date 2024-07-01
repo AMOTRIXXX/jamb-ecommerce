@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Jamb Tienda Online</title>
+
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Eliminar Usuario</h1>
+    <p>¿Estás seguro de que quieres eliminar este usuario?</p>
+    <form th:action="@{/usuario/eliminar/{id}(id=${usuario.id})}" method="post">
+        <h3>¿Estás seguro de que deseas eliminar este usuario?</h3>
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+    </form>
+</div>
+<!-- Footer -->
+<div th:include="usuario/template_usuario.html::footer"></div>
+
+<!-- Bootstrap core JavaScript -->
+<script th:src="@{vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Jamb Tienda Online</title>
+
+
+	<!-- Bootstrap core CSS -->
+	<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}"
+		  rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+
+	<style>
+		.container {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.left-column {
+			width: 50%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+
+		.right-column {
+			width: 45%;
+			background: linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), linear-gradient(to left, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+			padding: 20px;
+			border-radius: 10px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.form-group {
+			width: 80%;
+			margin-bottom: 15px;
+		}
+	</style>
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+	<div class="container">
+		<a class="navbar-brand" th:href="@{/}">Jamb Tienda Online</a>
+
+
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a class="nav-link" th:href="@{/usuario/login}">Login</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+
+<!-- Page Content -->
+<div class="container">
+
+	<div class="left-column">
+		<!-- Primera imagen -->
+		<img src="../../../../../images/Wk2qanime.gif" class="card-img" alt="...">
+		<!-- Segunda imagen -->
+		<img src="../../../../../images/4rSCanime2.gif" class="card-img" alt="...">
+	</div>
+
+	<div class="right-column">
+		<div class="card-body">
+			<h2>Registro</h2>
+
+			<form id="registroForm" th:action="@{/usuario/save}" method="post">
+				<div class="form-group">
+					<label for="nombres">Nombres:</label> <input type="text"
+																 class="form-control" id="nombre" name="nombre" required
+																 placeholder="Ingrese sus nombres" autocomplete="off">
+				</div>
+
+				<div class="form-group">
+					<label for="email">Email:</label> <input type="email"
+															 class="form-control" id="email" name="email" required
+															 placeholder="Ingrese su email" autocomplete="off">
+				</div>
+
+				<div class="form-group">
+					<label for="telefono">Teléfono:</label> <input type="text"
+																   class="form-control" id="telefono" name="telefono" required
+																   placeholder="Ingrese su teléfono" autocomplete="off">
+				</div>
+
+				<div class="form-group">
+					<label for="username">Usuario:</label> <input type="text"
+																  class="form-control" id="username" name="username" required
+																  placeholder="Ingrese su nombre de usuario" autocomplete="off">
+				</div>
+
+				<div class="form-group">
+					<label for="direccion">Dirección:</label> <input type="text"
+																	 class="form-control" id="direccion" name="direccion" required
+																	 placeholder="Ingrese su dirección" autocomplete="off">
+				</div>
+
+				<div class="form-group">
+					<label for="pwd">Contraseña:</label> <input type="password"
+																class="form-control" id="password" name="password" required
+																placeholder="Ingrese su contraseña" autocomplete="off">
+					<small id="passwordHelp" class="form-text text-dark">La contraseña debe tener al menos 5 caracteres alfanuméricos y un carácter especial.</small>
+				</div>
+				<br>
+				<div class="form-group">
+					<button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Guardar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<!-- /.container -->
+
+<!-- Footer -->
+<div th:include="usuario/template_usuario.html::footer"></div>
+
+<!-- Bootstrap core JavaScript -->
+<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+<script>
+	document.getElementById('registroForm').addEventListener('submit', function(event) {
+		var password = document.getElementById('password').value;
+		if (!validarPassword(password)) {
+			alert('La contraseña debe tener al menos 5 caracteres alfanuméricos y un carácter especial.');
+			event.preventDefault();
+		}
+	});
+
+	function validarPassword(password) {
+		var regex = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{5,}$/;
+		return regex.test(password);
+	}
+</script>
+
+</body>
+
+</html>

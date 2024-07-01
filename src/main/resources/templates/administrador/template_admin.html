@@ -1,0 +1,90 @@
+
+<!-- Navigation -->
+<div th:fragment="header">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" th:href="@{/administrador}">Jamb Tienda Online</a>
+
+			<form class="form-inline my-2 my-lg-0" method="post" th:action="@{/search}">
+				<input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search"
+					   name="nombre" autocomplete="off">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+			</form>
+
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+					aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<span th:if="${session.username}">Bienvenido, <span th:text="${session.username}"></span></span>
+							<span th:unless="${session.username}">Usuario</span>
+						</a>
+
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" th:href="@{/productos}">Productos</a>
+							<a class="dropdown-item" th:href="@{/administrador/usuarios}">Usuarios</a>
+							<a class="dropdown-item" th:href="@{/administrador/ordenes}">Ordenes</a>
+							<a class="dropdown-item" th:href="@{/usuario/cerrar}">Salir</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+</div>
+
+
+
+<!-- Footer -->
+<div th:fragment="footer">
+	<footer class="py-4 bg-dark">
+		<div class="container">
+			<div class="row mt-n2">
+				<div class="col-lg-3">
+					<h5 class="text-white">Ubicación</h5>
+					<p class="text-muted">Calle 49 Sur # 80-50</p>
+				</div>
+				<div class="col-lg-3">
+					<h5 class="text-white">Teléfono</h5>
+					<p class="text-muted">3118906621</p>
+				</div>
+				<div class="col-lg-3">
+					<h5 class="text-white">Correo</h5>
+					<p class="text-muted">jamb@gmail.com</p>
+				</div>
+				<div class="col-lg-3">
+					<h5 class="text-white">Redes Sociales</h5>
+					<ul class="list-unstyled">
+						<a th:href="@{/imagenes/facebook.png}" alt="Facebook"><img src="../../../../../images/facebook.png" alt="Facebook" width="30" height="30"></a>
+						<a th:href="@{/imagenes/instagram.png}" alt="Instagram"><img src="../../../../../images/instagram.png" alt="Instagram" width="30" height="30"></a>
+						<a th:href="@{/imagenes/whatsapp.png}" alt="WhatsApp"><img src="../../../../../images/whatsapp.png" alt="WhatsApp" width="30" height="30"></a>
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<p class="m-0 text-white">Copyright &copy; Jamb Tienda Online 2024</p>
+				</div>
+			</div>
+		</div>
+		<!-- /.container -->
+	</footer>
+</div>
+
+
+</div>
+
+
+
+<!-- Bootstrap core JavaScript -->
+<script th:src="@{vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+
+</html>
